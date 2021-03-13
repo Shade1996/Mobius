@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   entry: [
@@ -85,7 +86,13 @@ const config = {
   },
   devServer: {
     contentBase: './dist'
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      appMountId: 'app',
+      filename: "[name].js"
+      })
+  ]
 };
 
 module.exports = config;

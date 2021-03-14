@@ -1,9 +1,10 @@
-import  React, { useState, Suspense }  from 'react'
+import  React, { useState, Suspense, useRef, useEffect }  from 'react'
 import { Canvas, useLoader } from 'react-three-fiber'
 import { Spring } from 'react-spring/renderprops'
 import Bike3d from '../components/Bike3d'
 import { Html } from "drei"
 import { List, ListItem } from '@material-ui/core'
+import tossable from "tossable"
 
 function Loading() {
 	return (
@@ -26,8 +27,23 @@ const rad2deg = Math.PI / 180
 export default function HomePage() {
   const [scrollTop, setScrollTop] = useState(0)
 
+  const containerRef = useRef<any>()
+
+  useEffect(() => {
+    tossable({
+      touchTarget: containerRef.current,
+      min: 0,
+      max: 1000,
+      start: 0,
+      step: (val) => {
+        console.log(val)
+      }
+    })
+  }, [])
+
+
   return (
-    <div className="w-screen h-screen overflow-hidden">
+    <div className="w-screen h-screen overflow-hidden" ref={containerRef}>
       <Spring from={{ top: 0 }} to={{ top: scrollTop }}>
         {(p) => (
           <Canvas>
@@ -59,9 +75,6 @@ export default function HomePage() {
           </Canvas>
         )}
       </Spring>
-      <div className="w-full h-full absolute inset-0 overflow-x-hidden overflow-y-scroll space-y-6" onScroll={(e) => setScrollTop((e.target as HTMLDivElement).scrollTop)}>
-        <div style={{ width: "100%", height: "300%" }}></div>
-      </div>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 .bg-blur{
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(20px);
 }
 
 .map-container {

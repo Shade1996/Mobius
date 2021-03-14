@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 //@ts-ignore
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+import MapModal from '../components/MapModal';
 //@ts-ignore
 mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhZGUyMzMiLCJhIjoiY2ttN2YzeTFxMHhmbzJ2b2o2cHdtYmN5MyJ9.jMG5SOHve0NgU2aYqSX5BA'
@@ -39,6 +40,7 @@ export default function MapPage() {
             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
             </div>
             <div className="map-container" ref={mapContainer} />
+            <MapModal />
         </div>
     )
 }

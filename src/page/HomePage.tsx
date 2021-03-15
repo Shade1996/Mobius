@@ -6,6 +6,8 @@ import DrawerCard from '../components/DrawerCard'
 import { LineChart, Line, ResponsiveContainer, XAxis, Legend } from "recharts"
 import VisibilitySensor from "react-visibility-sensor"
 import { useMap } from './MapPage'
+import { useProxy, useSnapshot } from 'valtio'
+import { page } from '../state'
 
 function Loading() {
 	return (
@@ -74,7 +76,7 @@ const Card: React.FC<{ className?: string }> = ({ children, className }) => {
 export default function HomePage() {
     const [scrollTop, setScrollTop] = useState(0)
     const [mapContainer, lng, lat, zoom] = useMap()
-
+    useSnapshot(page)
     return (
         <div className="w-screen h-screen">
             <Spring to={{ top: scrollTop }} config={{ mass: 3 }}>
@@ -128,7 +130,9 @@ export default function HomePage() {
                         Current bike location:
                     </div>
                     <Card>
-                        <div ref={mapContainer}></div>
+                        <div ref={mapContainer} onClick={()=>{page.value = "map"
+                        console.log(page.value)
+                        } }></div>
                     </Card>
                 </DrawerCard>
             </div>

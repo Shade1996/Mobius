@@ -3,6 +3,8 @@ import mapboxgl from 'mapbox-gl'
 //@ts-ignore
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker'
 import DrawerCard from '../components/DrawerCard'
+import { page } from '../state'
+import { useSnapshot } from 'valtio'
 //@ts-ignore
 mapboxgl.workerClass = MapboxWorker
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhZGUyMzMiLCJhIjoiY2ttN2YzeTFxMHhmbzJ2b2o2cHdtYmN5MyJ9.jMG5SOHve0NgU2aYqSX5BA'
@@ -45,9 +47,9 @@ export const useMap = () => {
 
 export default function MapPage() {
     const [mapContainer] = useMap()
-
+    useSnapshot(page)
     return (
-        <div className="w-screen h-screen bg-yellow-300">
+        <div className="w-screen h-screen">
             <div className="absolute inset-0" ref={mapContainer} />
             <div className="w-full h-full overflow-y-scroll absolute inset-0">
                 <div className="h-5/6" />

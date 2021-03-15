@@ -14,5 +14,5 @@
     },
     "include": [
         "./src/**/*"
-    ]
+, "tailwind.config.js"    ]
 }

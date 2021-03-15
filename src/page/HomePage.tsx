@@ -57,20 +57,20 @@ export default function HomePage() {
       >
         <div style={{ height: "65%" }} />
         <DrawerCard>
+            <div className="text-3xl font-medium mb-5"> 
+              line2
+            </div>
             <div className="text-5xl mb-5 font-bold">
               Welcome back
             </div>
-            <div className="text-3xl mb-5"> 
-              line2
-            </div>
-            <div className="text-xl font-bold">line 3</div>
-            <div className="inline-block mr-4 text-xl mt-5">Routes</div>
-            <div className="inline-block text-xl">Challenges</div>
-            <div className="flow-root w-72 bg-gray-800 mt-12 p-6 text-lg rounded-3xl">
+            <div className="text-xl font-light">line 3</div>
+            <div className="inline-block mr-4 text-xl mt-5 font-mono">Routes</div>
+            <div className="inline-block text-xl font-mono">Challenges</div>
+            <div className="w-full bg-white bg-opacity-25 mt-4 p-6 text-lg rounded-3xl">
               <List  className="text-white space-y-12" >
-                <ListItem className="border border-yellow-700">123</ListItem>
-                <ListItem className="border border-yellow-700">123</ListItem>
-                <ListItem className="border border-yellow-700">123</ListItem>
+                <ListItem className="">Content 123</ListItem>
+                <ListItem className="">123</ListItem>
+                <ListItem className="">123</ListItem>
               </List>
             </div>
         </DrawerCard>
